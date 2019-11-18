@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id = "app">{{message}}</div>
+<div id = "app1"><span v-bind:title="message1">悬停</span></div>
+<div id = "app2"><span v-if="message2">你好？</span></div>
+<div id = "app3">
+    <ol>
+        <li v-for="message33 in message3">
+            {{message33.text}}
+        </li>
+    </ol>
+</div>
+<div id="app4">
+    <p>{{message4}}</p>
+    <input v-model="message4"><br>
+    <button v-on:click="reverseMessage">点我</button>
+</div>
+
+
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message:'你好'
+        }
+    });
+
+    var app1 = new Vue({
+        el: '#app1',
+        data: {
+            message: "现在时间:"+new Date().toLocaleString()
+        }
+    });
+
+    var app2 = new Vue({
+        el: "#app2",
+        data: {
+            message: true
+        }
+    });
+
+    var app3 = new Vue({
+        el: "#app3",
+        data: {
+            message:[
+                {text: "1"},
+                {text: "2"},
+                {text: "3"}
+            ]
+        }
+    });
+
+    var app4 = new Vue({
+        el: "#app4",
+        data: {
+            message: "are you ok?"
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message=this.message.split("").reverse().join("")
+            }
+        }
+    });
+
+    var app5 = new Vue({
+        el: "#app5",
+        data: {
+            message: "www.baidu.com"
+        }
+    })
+</script>
+</body>
+</html>
